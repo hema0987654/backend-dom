@@ -1,0 +1,17 @@
+                  List of relations
+ Schema |         Name         |   Type   |  Owner   
+--------+----------------------+----------+----------
+ public | alerts               | table    | postgres
+ public | alerts_id_seq        | sequence | postgres
+ public | invoice_items        | table    | postgres
+ public | invoice_items_id_seq | sequence | postgres
+ public | invoices             | table    | postgres
+ public | invoices_id_seq      | sequence | postgres
+ public | products             | table    | postgres
+ public | products_id_seq      | sequence | postgres
+ public | suppliers            | table    | postgres
+ public | suppliers_id_seq     | sequence | postgres
+ public | users                | table    | postgres
+ public | users_id_seq         | sequence | postgres
+(12 rows)
+
