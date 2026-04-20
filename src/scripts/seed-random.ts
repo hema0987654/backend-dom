@@ -129,17 +129,20 @@ function uniqueTag(): string {
 }
 
 function createDataSource(): DataSource {
+  const databaseUrl = process.env.DATABASE_URL;
+
   return new DataSource({
     type: 'postgres',
-    host: process.env.localhost || 'localhost',
-    port: Number.parseInt(process.env.port || '5432', 10),
-    username: process.env.username,
-    password: process.env.password,
-    database: process.env.database,
+    url: databaseUrl,
+    host: databaseUrl ? undefined : process.env.localhost || 'localhost',
+    port: databaseUrl ? undefined : Number.parseInt(process.env.port || '5432', 10),
+    username: databaseUrl ? undefined : process.env.username,
+    password: databaseUrl ? undefined : process.env.password,
+    database: databaseUrl ? undefined : process.env.database,
     entities: [User, Supplier, Product, Invoice, InvoiceItem, Alert],
     synchronize: false,
     ssl:
-      process.env.NODE_ENV === 'production'
+      databaseUrl || process.env.NODE_ENV === 'production'
         ? { rejectUnauthorized: false }
         : false,
   });
