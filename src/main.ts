@@ -10,10 +10,7 @@ let cachedApp: any;
 
 async function bootstrap() {
   if (!cachedApp) {
-    const app = await NestFactory.create(
-      AppModule,
-      new ExpressAdapter(server),
-    );
+    const app = await NestFactory.create(AppModule, new ExpressAdapter(server));
 
     const allowedOrigins = process.env.FRONTEND_URL
       ? process.env.FRONTEND_URL.split(',').map((o) => o.trim())
